@@ -1,2 +1,2 @@
-#This repo contains Bria Fassler's portfolio and STEP projects.
+This repo contains Bria Fassler's portfolio and STEP projects.
 
