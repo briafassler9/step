@@ -6,4 +6,49 @@
 
 #greeting-container {
   margin-top: 20px;
+}     
+
+.homeheader {
+    text-align: center;
+    font-size: 17px;
+    background-color: #99ffeb;
+    padding: 35px;
+    color: black;
 }
+
+.navbar {
+    overflow: hidden;
+    background-color: black;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: white;
+    color: black;
+}
+
+.homeaside {
+    position: relative;
+    float: right;
+    padding: 30px;
+    height: 407px;
+    text-align: center;
+    background-color: #d9d9d9;
+}
+
+footer {
+    text-align: center;
+    background-color: black;
+    padding: 35px;
+    color: white;
+}
+
+   
