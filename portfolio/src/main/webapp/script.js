@@ -13,28 +13,20 @@
 // limitations under the License.
 
 
-function randomPepperImage(){
-    const imageIndex1 = Math.floor(Math.random() * 5) + 1;
-    const imageUrl = 'PepperImages/Pepper' + imageIndex1 + '.jpg';
-    const imageElement = document.createElement('img');
-    imageElement.src = imageUrl;
-    const imageRemover1 = document.getElementById('random-image-container');
-  // Remove the previous image.
+var num = 10;
+
+/*A function that generates a random image of a dog*/
+function randomDogImage(){
+  const imageIndex = Math.floor(Math.random() * num) + 1;
+  const imageUrl = 'DogImages/Dog' + imageIndex + '.jpg';
+  const imageElement = document.createElement('img');
+  imageElement.src = imageUrl;
+  const imageRemover1 = document.getElementById('random-image-container');
   imageRemover1.innerHTML = '';
   imageRemover1.appendChild(imageElement);
 
 }
 
-function randomGingerImage(){
-    const imageIndex2 = Math.floor(Math.random() * 5) + 1;
-    const imageUrl = 'GingerImages/Ginger' + imageIndex2 + '.jpg';
-    const imageElement = document.createElement('img');
-    imageElement.src = imageUrl;
-    const imageRemover2 = document.getElementById('random-image-container');
-  imageRemover2.innerHTML = '';
-  imageRemover2.appendChild(imageElement);
-
-}
 
 
 
