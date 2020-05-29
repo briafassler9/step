@@ -12,17 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['I like mint green', 'I have 2 dogs', 'I go to Howard University', 'I live in Maryland'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+function randomPepperImage(){
+    const imageIndex1 = Math.floor(Math.random() * 5) + 1;
+    const imageUrl = 'PepperImages/Pepper' + imageIndex1 + '.jpg';
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    const imageRemover1 = document.getElementById('random-image-container');
+  // Remove the previous image.
+  imageRemover1.innerHTML = '';
+  imageRemover1.appendChild(imageElement);
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
 }
+
+function randomGingerImage(){
+    const imageIndex2 = Math.floor(Math.random() * 5) + 1;
+    const imageUrl = 'GingerImages/Ginger' + imageIndex2 + '.jpg';
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    const imageRemover2 = document.getElementById('random-image-container');
+  imageRemover2.innerHTML = '';
+  imageRemover2.appendChild(imageElement);
+
+}
+
+
+
