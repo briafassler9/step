@@ -1,7 +1,6 @@
 .homeheader {
   text-align: center;
   font-size: 17px;
-  background-color: #99ffeb;
   padding: 35px;
   color: black;
   background: url('https://i.pinimg.com/originals/0a/6d/b0/0a6db0b9d8b365fb5ecf3d55e6b5a0ef.jpg');
@@ -57,7 +56,7 @@
 .sidecolumn {
   flex: 20%;
   padding: 15px;
-  background-color: pink;
+  background-color: #ffccff;
   text-align: center;
 }
 
@@ -75,6 +74,18 @@
 
 .dogrow {
   display: flex;
+}
+
+.dogbutton {
+  text-align: center;
+  padding: 15px;
+  background-color: pink;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 12px;
+  border: pink;
+
 }
 
 .sportscolumn {
@@ -100,12 +111,20 @@
   max-height: 150px;
 }
 
-table, th, td {
-  border: 1px solid black;
+table {
   border-collapse: collapse;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
 }
+
 th, td {
+  border: 1px solid black;
   padding: 10px;
+}
+
+tr:nth-child(even){
+  background-color: #e6cab3;
 }
 
 p {

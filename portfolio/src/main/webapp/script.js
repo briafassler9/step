@@ -13,11 +13,11 @@
 // limitations under the License.
 
 
-var num = 10;
+var numOfDogImages = 10;
 
 /*A function that generates a random image of a dog*/
 function randomDogImage(){
-  const imageIndex = Math.floor(Math.random() * num) + 1;
+  const imageIndex = Math.floor(Math.random() * numOfDogImages) + 1;
   const imageUrl = 'DogImages/Dog' + imageIndex + '.jpg';
   const imageElement = document.createElement('img');
   imageElement.src = imageUrl;
