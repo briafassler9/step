@@ -1,24 +1,38 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+.homeheader {
+  text-align: center;
+  font-size: 17px;
+  padding: 35px;
+  color: black;
+  background: url('https://i.pinimg.com/originals/0a/6d/b0/0a6db0b9d8b365fb5ecf3d55e6b5a0ef.jpg');
 }
 
-#greeting-container {
-  margin-top: 20px;
-}     
+.dogheader {
+  text-align: center;
+  font-size: 17px;
+  padding: 35px;
+  color: black;
+  background: url('https://i.pinimg.com/originals/34/5a/50/345a50d9a43718c9e29f09b4c725bc41.jpg');
+}
 
-.homeheader {
-    text-align: center;
-    font-size: 17px;
-    background-color: #99ffeb;
-    padding: 35px;
-    color: black;
+.sportsheader {
+  text-align: center;
+  font-size: 17px;
+  padding: 35px;
+  color: black;
+  background: url('https://cdn5.vectorstock.com/i/1000x1000/30/29/seamless-sports-pattern-background-vector-1963029.jpg')
+}
+
+.bakingheader {
+  text-align: center;
+  font-size: 17px;
+  padding: 35px;
+  color: black;
+  background: url('https://cdn5.vectorstock.com/i/1000x1000/86/29/baking-background-vector-8648629.jpg')
 }
 
 .navbar {
-    overflow: hidden;
-    background-color: black;
+  overflow: hidden;
+  background-color: black;
 }
 
 .navbar a {
@@ -31,24 +45,103 @@
 }
 
 .navbar a:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
-.homeaside {
-    position: relative;
-    float: right;
-    padding: 30px;
-    height: 407px;
-    text-align: center;
-    background-color: #d9d9d9;
+.homerow {
+  display: flex;
+}
+
+.sidecolumn {
+  flex: 20%;
+  padding: 15px;
+  background-color: #ffccff;
+  text-align: center;
+}
+
+.maincolumn {
+  flex: 80%;
+  padding: 15px;
+  background-color: #b3ffff;
+}
+
+.dogcolumn {
+  flex: 50%;
+  padding: 15px;
+  text-align: center;
+}
+
+.dogrow {
+  display: flex;
+}
+
+.dogbutton {
+  text-align: center;
+  padding: 15px;
+  background-color: pink;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 12px;
+  border: pink;
+
+}
+
+.sportscolumn {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+  padding: 15px;
+}
+
+.sportsrow {
+  display: flex;
+}
+
+.favoritethings {
+  column-count: 3;
+}
+
+.centerimage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+tr:nth-child(even){
+  background-color: #e6cab3;
+}
+
+p {
+  font-size: 20px;
+}
+
+#random-image-container img {
+  margin-top: 20px;
+  max-height: 300px;
+  max-width: 300px;
 }
 
 footer {
-    text-align: center;
-    background-color: black;
-    padding: 35px;
-    color: white;
+  text-align: center;
+  background-color: black;
+  padding: 35px;
+  color: white;
 }
 
    

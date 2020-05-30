@@ -12,17 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['I like mint green', 'I have 2 dogs', 'I go to Howard University', 'I live in Maryland'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+var numOfDogImages = 10;
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+/*A function that generates a random image of a dog*/
+function randomDogImage(){
+  const imageIndex = Math.floor(Math.random() * numOfDogImages) + 1;
+  const imageUrl = 'DogImages/Dog' + imageIndex + '.jpg';
+  const imageElement = document.createElement('img');
+  imageElement.src = imageUrl;
+  const imageRemover1 = document.getElementById('random-image-container');
+  imageRemover1.innerHTML = '';
+  imageRemover1.appendChild(imageElement);
+
 }
+
+
+
+
