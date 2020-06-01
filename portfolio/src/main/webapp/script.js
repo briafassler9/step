@@ -21,9 +21,9 @@ function randomDogImage(){
   const imageUrl = 'DogImages/Dog' + imageIndex + '.jpg';
   const imageElement = document.createElement('img');
   imageElement.src = imageUrl;
-  const imageRemover1 = document.getElementById('random-image-container');
-  imageRemover1.innerHTML = '';
-  imageRemover1.appendChild(imageElement);
+  const imageRemover = document.getElementById('random-image-container');
+  imageRemover.innerHTML = '';
+  imageRemover.appendChild(imageElement);
 
 }
 
