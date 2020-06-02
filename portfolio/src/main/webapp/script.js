@@ -24,9 +24,14 @@ function randomDogImage(){
   const imageRemover = document.getElementById('random-image-container');
   imageRemover.innerHTML = '';
   imageRemover.appendChild(imageElement);
-
 }
 
+/*A function that fetches the Data Servlet*/
+function getGreeting() {
+  fetch('/data').then(response => response.text()).then((response) => {
+    document.getElementById('quote-container').innerText = response;
+  });
+}
 
 
 
