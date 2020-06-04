@@ -6,6 +6,10 @@
   background: url('https://i.pinimg.com/originals/0a/6d/b0/0a6db0b9d8b365fb5ecf3d55e6b5a0ef.jpg');
 }
 
+.homebody {
+  background-color: #f9f9f0;
+}
+
 .dogheader {
   text-align: center;
   font-size: 17px;
