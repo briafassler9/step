@@ -35,14 +35,18 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    final Query commentQuery = new Query("Comments").addSort("timestamp", SortDirection.DESCENDING);
+    final String commentTable = "Comments";
+    final String commentCol = "comments";
+    final String timestampCol = "timestamp";
+
+    final Query commentQuery = new Query(commentTable).addSort(timestampCol, SortDirection.DESCENDING);
     final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     final PreparedQuery results = datastore.prepare(commentQuery);
     
     List<String> commentForm = new ArrayList<String>();
     for (Entity entity : results.asIterable()) {
-      final String comments = (String) entity.getProperty("comments");
-      final long timestamp = (long) entity.getProperty("timestamp");
+      final String comments = (String) entity.getProperty(commentCol);
+      final long timestamp = (long) entity.getProperty(timestampCol);
       commentForm.add(comments);
     }
 
@@ -52,12 +56,16 @@ public class DataServlet extends HttpServlet {
   }
   
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    final String comments = request.getParameter("comments");
+    final String commentTable = "Comments";
+    final String commentCol = "comments";
+    final String timestampCol = "timestamp";
+
+    final String comments = request.getParameter(commentCol);
     final long timestamp = System.currentTimeMillis();
 
-    Entity commentEntity = new Entity("Comments");
-    commentEntity.setProperty("comments", comments);
-    commentEntity.setProperty("timestamp", timestamp);
+    Entity commentEntity = new Entity(commentTable);
+    commentEntity.setProperty(commentCol, comments);
+    commentEntity.setProperty(timestampCol, timestamp);
 
     final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
