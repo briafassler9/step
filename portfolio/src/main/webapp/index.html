@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body style="background-color: #f9f9f0">
     <header>
       <div class="homeheader">
         <h1>Bria Fassler's Portfolio</h1>
@@ -60,10 +60,14 @@
           </ul>
       </div>
     </div>
-    <h1>Grocery List</h1>
-      <p>Click here to see my grocery list.</p>
-      <button onclick="getGreeting()">Grocery List</button>
-      <div id="quote-container"></div>
+    <h3>Leave Comments Here!</h3>
+    <form action="/data" method="POST">
+      <label for="comments">Comment(s):</label><br>
+      <input type="comments" name="comments"><br><br>
+      <button>Submit</button><br>
+      <div id="task-list"></div>
+      <body onload="loadComments()"></body>
+    </form>
     <footer>
       <p>Thanks for checking my portfolio out! @Bria Fassler</p>
     </footer>
