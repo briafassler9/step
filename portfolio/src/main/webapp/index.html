@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body class="bodyheader">
+  <body class="homebody">
     <header>
       <div class="homeheader">
         <h1>Bria Fassler's Portfolio</h1>
@@ -62,7 +62,13 @@
     </div>
     <h3>Leave Comments Here!</h3>
     <form action="/data" method="POST">
-      <label for="comments">Comment(s):</label><br>
+      <label for="numOfComments"><b>Choose the number of comments to display:</b></label><br>
+      <select name="numOfComments">
+        <option value="one">1</option>
+        <option value="two">2</option>
+        <option value="three">3</option>
+      </select><br><br>
+      <label for="comments"><b>Comment(s):</b></label><br>
       <input type="comments" name="comments"><br><br>
       <button>Submit</button><br>
       <div id="task-list"></div>
