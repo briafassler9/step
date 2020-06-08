@@ -33,41 +33,37 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static String commentTable = "Comments";
+  private static String commentCol = "comments";
+  private static String timestampCol = "timestamp";
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    final String commentTable = "Comments";
-    final String commentCol = "comments";
-    final String timestampCol = "timestamp";
-
-    final Query commentQuery = new Query(commentTable).addSort(timestampCol, SortDirection.DESCENDING);
-    final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    final PreparedQuery results = datastore.prepare(commentQuery);
+    Query commentQuery = new Query(commentTable).addSort(timestampCol, SortDirection.DESCENDING);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(commentQuery);
     
     List<String> commentForm = new ArrayList<String>();
     for (Entity entity : results.asIterable()) {
-      final String comments = (String) entity.getProperty(commentCol);
-      final long timestamp = (long) entity.getProperty(timestampCol);
+      String comments = (String) entity.getProperty(commentCol);
+      long timestamp = (long) entity.getProperty(timestampCol);
       commentForm.add(comments);
     }
 
     response.setContentType("application/json");
-    final String json = new Gson().toJson(commentForm);
+    String json = new Gson().toJson(commentForm);
     response.getWriter().println(json);
   }
   
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    final String commentTable = "Comments";
-    final String commentCol = "comments";
-    final String timestampCol = "timestamp";
-
-    final String comments = request.getParameter(commentCol);
-    final long timestamp = System.currentTimeMillis();
-
+    String comments = request.getParameter(commentCol);
+    long timestamp = System.currentTimeMillis();
+  
     Entity commentEntity = new Entity(commentTable);
     commentEntity.setProperty(commentCol, comments);
     commentEntity.setProperty(timestampCol, timestamp);
 
-    final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
     response.sendRedirect("/index.html");
