@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Bria Fassler's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body class="homebody" >
     <header>
-      <div class="homeheader">
+      <div class="homeheader" onload="getNumComments(3)">
         <h1>Bria Fassler's Portfolio</h1>
       </div>
     </header>
@@ -60,10 +61,15 @@
           </ul>
       </div>
     </div>
-    <h1>Grocery List</h1>
-      <p>Click here to see my grocery list.</p>
-      <button onclick="getGreeting()">Grocery List</button>
-      <div id="quote-container"></div>
+    <h3>Leave Comments Here!</h3>
+    <form action="/data" method="POST">
+      <label for="comments"><b>Comment(s):</b></label><br>
+      <input type="comments" name="comments"><br><br>
+      <label for="numOfComments"><b>Choose the number of comments to display:</b></label><br>
+      <input type="number" name="numOfComments" min="1" max="5" onchange="getNumComments(this.value)"><br><br>
+      <button>Submit</button><br><br>
+      <div id="task-list"></div>
+    </form>
     <footer>
       <p>Thanks for checking my portfolio out! @Bria Fassler</p>
     </footer>

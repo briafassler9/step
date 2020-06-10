@@ -26,12 +26,43 @@ function randomDogImage(){
   imageRemover.appendChild(imageElement);
 }
 
-/*A function that fetches the Data Servlet*/
-function getGreeting() {
-  fetch('/data').then(response => response.text()).then((response) => {
-    document.getElementById('quote-container').innerText = response;
+/** Displays amount of comments chosen by the user. */
+function getNumComments(commentsNum) {
+  fetch('/data?numOfComments=' + commentsNum).then(response => response.json()).then((comments) => {
+    const taskListElement = document.getElementById('task-list');
+    taskListElement.innerHTML="";
+      for (let i=0; i<comments.length; i++)
+      {
+        taskListElement.appendChild(createCommentElement(comments[i]));
+      } 
   });
 }
 
+/**A function that creates the comment and delete button. */
+function createCommentElement(task) {
+  const taskElement = document.createElement('li');
+  taskElement.className = 'task';
 
+  const titleElement = document.createElement('span');
+  titleElement.innerText = task;
 
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteTask(task);
+
+    // Remove the task from the DOM.
+    taskElement.remove();
+  });
+
+  taskElement.appendChild(titleElement);
+  taskElement.appendChild(deleteButtonElement);
+  return taskElement;
+}
+
+/** Tells the server to delete the task. */
+function deleteTask(task) {
+  const params = new URLSearchParams();
+  params.append('id', task.id);
+  fetch('/data', {method: 'POST', body: params});
+}
