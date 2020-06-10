@@ -26,16 +26,19 @@ function randomDogImage(){
   imageRemover.appendChild(imageElement);
 }
 
-function loadComments() {
-  fetch('/data').then(response => response.json()).then(data => {
-    const commentListElement = document.getElementById('task-list');
-    data.forEach((task) => {
-      commentListElement.appendChild(createCommentElement(task));
-    })
+/** Displays amount of comments chosen by the user. */
+function getNumComments(commentsNum) {
+  fetch('/data?numOfComments=' + commentsNum).then(response => response.json()).then((comments) => {
+    const taskListElement = document.getElementById('task-list');
+    taskListElement.innerHTML="";
+      for (let i=0; i<comments.length; i++)
+      {
+        taskListElement.appendChild(createCommentElement(comments[i]));
+      } 
   });
 }
 
-/** Creates an element that represents a task, including its delete button. */
+/**A function that creates the comment and delete button. */
 function createCommentElement(task) {
   const taskElement = document.createElement('li');
   taskElement.className = 'task';
@@ -61,6 +64,5 @@ function createCommentElement(task) {
 function deleteTask(task) {
   const params = new URLSearchParams();
   params.append('id', task.id);
-  fetch('/delete-task', {method: 'POST', body: params});//Testing
+  fetch('/data', {method: 'POST', body: params});
 }
-
