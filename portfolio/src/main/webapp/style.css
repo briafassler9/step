@@ -167,4 +167,12 @@ footer {
 .task span {
   flex-grow: 1;
 }
+
+#piechart-container {
+  margin-top: 20px;
+}
+
+#columnchart-container {
+  margin-top: 20px;
+}
    

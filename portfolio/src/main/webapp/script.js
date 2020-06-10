@@ -66,3 +66,50 @@ function deleteTask(task) {
   params.append('id', task.id);
   fetch('/data', {method: 'POST', body: params});
 }
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawPieChart);
+google.charts.setOnLoadCallback(drawColumnChart);
+
+/** Creates a pie chart and adds it to the page. */
+function drawPieChart() {
+  const fruitData = google.visualization.arrayToDataTable([
+    ['Fruit', 'Quantity'],
+    ['Apples', 9],
+    ['Bananas', 12],
+    ['Oranges', 4],
+    ['Pineapples', 8],
+    ['Watermelons', 15],
+  ]);
+  
+
+  const pieChartDimensions = {
+    'title': 'Fruit Quantity',
+    'width': 500,
+    'height': 400,
+  };
+
+  const pieChart = new google.visualization.PieChart(
+    document.getElementById('piechart-container'));
+    pieChart.draw(fruitData, pieChartDimensions);
+}
+
+function drawColumnChart(){
+  const classGrades = google.visualization.arrayToDataTable([
+    ['Grade', 'Amount of Students', { role: 'style'}],
+    ['A', 6, 'blue'],
+    ['B', 11, 'pink'],
+    ['C', 9, 'purple'],
+    ['D', 2, 'yellow'],
+  ]);
+
+  const columnDimensions = {
+    'title': 'Class Grades',
+    'width': 600,
+    'height': 400,
+  };
+
+  const columnChart = new google.visualization.ColumnChart(
+    document.getElementById("columnchart-container"));
+    columnChart.draw(classGrades, columnDimensions);
+}
