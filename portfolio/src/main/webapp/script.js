@@ -31,9 +31,9 @@ function getNumComments(commentsNum) {
   fetch('/data?numOfComments=' + commentsNum).then(response => response.json()).then((comments) => {
     const taskListElement = document.getElementById('task-list');
     taskListElement.innerHTML="";
-      for (let i=0; i<commentsNum; i++)
+      for (let i=0; i<comments.length; i++)
       {
-      taskListElement.appendChild(createCommentElement(comments[i]));
+        taskListElement.appendChild(createCommentElement(comments[i]));
       } 
   });
 }
