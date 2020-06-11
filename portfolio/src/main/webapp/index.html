@@ -5,6 +5,8 @@
     <title>Bria Fassler's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYwLqzr9RMEmiWa3ZJsTSeWbHkUJ5Xbfo&callback=initMap"
+    type="text/javascript"></script>
     <script src="script.js"></script>
   </head>
   <body class="homebody" >
@@ -77,6 +79,10 @@
       </select>
       <button>Submit</button>
     </form>
+    <body onload="createMap();">
+      <h3>Google Maps</h3>
+      <div id="map"></div>
+    </body>
     <h3>Leave Comments Here!</h3>
     <form action="/data" method="POST">
       <label for="comments"><b>Comment(s):</b></label><br>
