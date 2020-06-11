@@ -168,11 +168,7 @@ footer {
   flex-grow: 1;
 }
 
-#piechart-container {
-  margin-top: 20px;
-}
-
-#columnchart-container {
+#chart-container {
   margin-top: 20px;
 }
    
