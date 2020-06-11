@@ -68,48 +68,27 @@ function deleteTask(task) {
 }
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawPieChart);
-google.charts.setOnLoadCallback(drawColumnChart);
+google.charts.setOnLoadCallback(drawFoodChart);
 
-/** Creates a pie chart and adds it to the page. */
-function drawPieChart() {
-  const fruitData = google.visualization.arrayToDataTable([
-    ['Fruit', 'Quantity'],
-    ['Apples', 9],
-    ['Bananas', 12],
-    ['Oranges', 4],
-    ['Pineapples', 8],
-    ['Watermelons', 15],
-  ]);
-  
+/** Draws user inputted pie chart and adds to page. */
+function drawFoodChart() {
+  fetch('/food-data').then(response => response.json())
+  .then((foodVotes) => {
+    const breakfastData = new google.visualization.DataTable();
+      breakfastData.addColumn('string', 'Breakfast Food');
+      breakfastData.addColumn('number', 'Votes');
+      Object.keys(foodVotes).forEach((food) => {
+        breakfastData.addRow([food, foodVotes[food]]);
+      });
 
-  const pieChartDimensions = {
-    'title': 'Fruit Quantity',
-    'width': 500,
-    'height': 400,
-  };
+      const dimensions = {
+        'title': 'Favorite Breakfast Food',
+        'width': 650,
+        'height': 500,
+      };
 
-  const pieChart = new google.visualization.PieChart(
-    document.getElementById('piechart-container'));
-    pieChart.draw(fruitData, pieChartDimensions);
-}
-
-function drawColumnChart(){
-  const classGrades = google.visualization.arrayToDataTable([
-    ['Grade', 'Amount of Students', { role: 'style'}],
-    ['A', 6, 'blue'],
-    ['B', 11, 'pink'],
-    ['C', 9, 'purple'],
-    ['D', 2, 'yellow'],
-  ]);
-
-  const columnDimensions = {
-    'title': 'Class Grades',
-    'width': 600,
-    'height': 400,
-  };
-
-  const columnChart = new google.visualization.ColumnChart(
-    document.getElementById("columnchart-container"));
-    columnChart.draw(classGrades, columnDimensions);
+      const foodChart = new google.visualization.PieChart(
+        document.getElementById('chart-container'));
+        foodChart.draw(breakfastData, dimensions);
+  });
 }
