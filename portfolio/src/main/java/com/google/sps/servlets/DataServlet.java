@@ -28,8 +28,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns user comments. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
@@ -48,11 +51,11 @@ public class DataServlet extends HttpServlet {
       String comments = (String) entity.getProperty(commentCol);
       long timestamp = (long) entity.getProperty(timestampCol);
       commentForm.add(comments);
-    }
+    } 
 
     response.setContentType("application/json");
-    String json = new Gson().toJson(commentForm);
-    response.getWriter().println(json);
+    String commentJSON = new Gson().toJson(commentForm);
+    response.getWriter().println(commentJSON);
   }
   
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

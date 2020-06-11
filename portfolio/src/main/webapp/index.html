@@ -61,10 +61,22 @@
           </ul>
       </div>
     </div>
-    <h3>Pie Chart</h3>
-    <div id="piechart-container"></div>
-    <h3>Column Chart</h3>
-    <div id="columnchart-container"></div>
+    <h3>Vote For Your Favorite Breakfast Food!</h3>
+    <div id="chart-container"></div>
+    <h4>Vote</h4>
+    <form action="/food-data" method="POST">
+      <select name="food">
+        <option value="Pancakes">Pancakes</option>
+        <option value="Waffles">Waffles</option>
+        <option value="Sausage">Sausage</option>
+        <option value="Eggs">Eggs</option>
+        <option value="Toast">Toast</option>
+        <option value="Bacon">Bacon</option>
+        <option value="Cereal">Cereal</option>
+        <option value="Other">Other</option>
+      </select>
+      <button>Submit</button>
+    </form>
     <h3>Leave Comments Here!</h3>
     <form action="/data" method="POST">
       <label for="comments"><b>Comment(s):</b></label><br>
