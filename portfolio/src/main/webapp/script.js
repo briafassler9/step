@@ -93,12 +93,21 @@ function drawFoodChart() {
   });
 }
 
+const map;
+const landmarks = [
+  {lat: 39.443167, lng: -76.616569, name: 'Baltimore County', description: 'Baltimore County is where I was born and raised'},
+  {lat: 39.269615, lng: -76.713206, name: 'Western Tech', description: 'I went to high school here and graduated in 2019'},
+  {lat: 39.394783, lng: -77.019653, name: 'Northwest Regional Park', description: 'Favorite park to relax or play soccer at'},
+  {lat: 39.922274, lng: -77.019653, name: 'Howard University', description: 'Im currently a rising sophomore majoring in Computer Science'},
+  {lat: 39.413118, lng: -76.774756, name: 'Foundry Row', description: 'Best spot to get food and hang with friends!'},
+];
+
 /**Creates a map in dark mode and adds it to the page. */
 function createMap() {
-  const map = new google.maps.Map(
-    document.getElementById('map'),
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
     //coordinates pointing to Googleplex
-    {center: {lat: 39.443167, lng: -76.616569}, zoom: 12,
+    center: {lat: 39.443167, lng: -76.616569},
     styles: [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -181,21 +190,9 @@ function createMap() {
     ]
   });
 
-  addLandmark(
-    map, 39.443167, -76.616569, 'Baltimore County',
-    'Baltimore County is where I was born and raised!')
-  addLandmark(
-    map, 39.269615, -76.713206, 'Western Tech',
-    'I went to high school here and graduated in 2019.')
-  addLandmark(
-    map, 39.394783, -76.827264, 'Northwest Regional Park',
-    'Favorite park to relax or play soccer at.')
-  addLandmark(
-      map, 38.922274, -77.019653, 'Howard University',
-      'I am currently a rising sophomore majoring in Computer Science.')
-  addLandmark(
-      map, 39.413118, -76.774756, 'Foundry Row',
-      'Best spot to get food and hang with friends!');
+  for (var i = 0; i < landmarks.length; i++) {
+    addLandmark(map, landmarks[i].lat, landmarks[i].lng, landmarks[i].name, landmarks[i].description);
+  }
 }
 
 /** Adds a marker that shows an info window when clicked. */
