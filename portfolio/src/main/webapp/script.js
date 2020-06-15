@@ -93,7 +93,7 @@ function drawFoodChart() {
   });
 }
 
-const map;
+var map;
 const landmarks = [
   {lat: 39.443167, lng: -76.616569, name: 'Baltimore County', description: 'Baltimore County is where I was born and raised'},
   {lat: 39.269615, lng: -76.713206, name: 'Western Tech', description: 'I went to high school here and graduated in 2019'},
