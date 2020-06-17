@@ -93,8 +93,115 @@ function drawFoodChart() {
   });
 }
 
+var map;
+const landmarks = [
+  {lat: 39.443167, lng: -76.616569, name: 'Baltimore County', description: 'Baltimore County is where I was born and raised'},
+  {lat: 39.269615, lng: -76.713206, name: 'Western Tech', description: 'I went to high school here and graduated in 2019'},
+  {lat: 39.394783, lng: -77.019653, name: 'Northwest Regional Park', description: 'Favorite park to relax or play soccer at'},
+  {lat: 39.922274, lng: -77.019653, name: 'Howard University', description: 'Im currently a rising sophomore majoring in Computer Science'},
+  {lat: 39.413118, lng: -76.774756, name: 'Foundry Row', description: 'Best spot to get food and hang with friends!'},
+];
+
+/**Creates a map in dark mode and adds it to the page. */
 function createMap() {
-  const map = new google.maps.Map(
-    document.getElementById('map'),
-    {center: {lat: 37.422, lng: -122.084}, zoom: 16});
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    //coordinates pointing to Googleplex
+    center: {lat: 39.443167, lng: -76.616569},
+    styles: [
+      {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+      {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [{color: '#263c3f'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#6b9a76'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{color: '#38414e'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#212a37'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#9ca5b3'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [{color: '#746855'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#1f2835'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#f3d19c'}]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [{color: '#2f3948'}]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [{color: '#17263c'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#515c6d'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.stroke',
+        stylers: [{color: '#17263c'}]
+      }
+    ]
+  });
+
+  for (var i = 0; i < landmarks.length; i++) {
+    addLandmark(map, landmarks[i].lat, landmarks[i].lng, landmarks[i].name, landmarks[i].description);
+  }
+}
+
+/** Adds a marker that shows an info window when clicked. */
+function addLandmark(map, lat, lng, title, description) {
+  const marker = new google.maps.Marker(
+      {position: {lat: lat, lng: lng}, map: map, title: title});
+
+  const infoWindow = new google.maps.InfoWindow({content: description});
+  marker.addListener('click', () => {
+    infoWindow.open(map, marker);
+  });
 }
