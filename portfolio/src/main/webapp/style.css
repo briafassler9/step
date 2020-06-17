@@ -153,13 +153,15 @@ footer {
 }
 
 #task-list {
-  list-style-type: none;
+  list-style-type: none;           
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .task {
   border: thin solid black;
-  display: flex;
-  margin: 10px;
+  display: inline-flex;
   padding: 10px;
   width: 300px;
 }
@@ -169,7 +171,11 @@ footer {
 }
 
 #chart-container {
-  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #map {
@@ -181,4 +187,10 @@ footer {
   margin-right: auto;
   width: 50%;
 }
+
+#mainsection {
+  text-align: center;
+  margin: auto;
+}
+
    

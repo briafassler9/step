@@ -13,10 +13,10 @@
 // limitations under the License.
 
 
-var numOfDogImages = 10;
+const numOfDogImages = 10;
 
-/*A function that generates a random image of a dog*/
-function randomDogImage(){
+/** A function that generates a random image of a dog. */
+function randomDogImage() {
   const imageIndex = Math.floor(Math.random() * numOfDogImages) + 1;
   const imageUrl = 'DogImages/Dog' + imageIndex + '.jpg';
   const imageElement = document.createElement('img');
@@ -30,15 +30,14 @@ function randomDogImage(){
 function getNumComments(commentsNum) {
   fetch('/data?numOfComments=' + commentsNum).then(response => response.json()).then((comments) => {
     const taskListElement = document.getElementById('task-list');
-    taskListElement.innerHTML="";
-      for (let i=0; i<comments.length; i++)
-      {
-        taskListElement.appendChild(createCommentElement(comments[i]));
-      } 
+    taskListElement.innerHTML='';
+    for (let i=0; i<comments.length; i++) {
+      taskListElement.appendChild(createCommentElement(comments[i]));
+    }
   });
 }
 
-/**A function that creates the comment and delete button. */
+/** A function that creates the comment and delete button. */
 function createCommentElement(task) {
   const taskElement = document.createElement('li');
   taskElement.className = 'task';
@@ -67,17 +66,17 @@ function deleteTask(task) {
   fetch('/data', {method: 'POST', body: params});
 }
 
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', { 'packages':['corechart']});
 google.charts.setOnLoadCallback(drawFoodChart);
 
 /** Draws user inputted pie chart and adds to page. */
 function drawFoodChart() {
   fetch('/food-data').then(response => response.json())
-  .then((foodVotes) => {
-    const breakfastData = new google.visualization.DataTable();
-      breakfastData.addColumn('string', 'Breakfast Food');
-      breakfastData.addColumn('number', 'Votes');
-      Object.keys(foodVotes).forEach((food) => {
+      .then((foodVotes) => {
+        const breakfastData = new google.visualization.DataTable();
+        breakfastData.addColumn('string', 'Breakfast Food');
+        breakfastData.addColumn('number', 'Votes');
+        Object.keys(foodVotes).forEach((food) => {
         breakfastData.addRow([food, foodVotes[food]]);
       });
 

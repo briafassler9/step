@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Bria Fassler's Portfolio</title>
@@ -63,35 +63,37 @@
           </ul>
       </div>
     </div>
-    <h3>Vote For Your Favorite Breakfast Food!</h3>
-    <div id="chart-container"></div>
-    <h4>Vote</h4>
-    <form action="/food-data" method="POST">
-      <select name="food">
-        <option value="Pancakes">Pancakes</option>
-        <option value="Waffles">Waffles</option>
-        <option value="Sausage">Sausage</option>
-        <option value="Eggs">Eggs</option>
-        <option value="Toast">Toast</option>
-        <option value="Bacon">Bacon</option>
-        <option value="Cereal">Cereal</option>
-        <option value="Other">Other</option>
-      </select>
-      <button>Submit</button>
-    </form>
-    <body onload="createMap();">
-      <h3>Google Maps</h3>
-      <div id="map"></div>
-    </body>
-    <h3>Leave Comments Here!</h3>
-    <form action="/data" method="POST">
-      <label for="comments"><b>Comment(s):</b></label><br>
-      <input type="comments" name="comments"><br><br>
-      <label for="numOfComments"><b>Choose the number of comments to display:</b></label><br>
-      <input type="number" name="numOfComments" min="1" max="5" onchange="getNumComments(this.value)"><br><br>
-      <button>Submit</button><br><br>
-      <div id="task-list"></div>
-    </form>
+    <section id="mainsection">
+      <h3>Vote For Your Favorite Breakfast Food!</h3>
+      <div id="chart-container"></div>
+      <h4>Vote Here!</h4>
+      <form action="/food-data" method="POST">
+        <select name="food">
+          <option value="Pancakes">Pancakes</option>
+          <option value="Waffles">Waffles</option>
+          <option value="Sausage">Sausage</option>
+          <option value="Eggs">Eggs</option>
+          <option value="Toast">Toast</option>
+          <option value="Bacon">Bacon</option>
+          <option value="Cereal">Cereal</option>
+          <option value="Other">Other</option>
+        </select>
+        <button>Submit</button>
+      </form>
+      <body onload="createMap();">
+        <h3>Map About Me</h3>
+        <div id="map"></div>
+      </body>
+      <h3>Leave Comments Here!</h3>
+      <form action="/data" method="POST">
+        <label for="comments"><b>Comment(s):</b></label><br>
+        <input type="comments" name="comments"><br><br>
+        <label for="numOfComments"><b>Choose the number of comments to display:</b></label><br>
+        <input type="number" name="numOfComments" min="1" max="5" onchange="getNumComments(this.value)"><br><br>
+        <button>Submit</button><br><br>
+        <div id="task-list"></div>
+      </form>
+    </section>
     <footer>
       <p>Thanks for checking my portfolio out! @Bria Fassler</p>
     </footer>
